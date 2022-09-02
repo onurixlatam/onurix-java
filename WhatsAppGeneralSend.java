@@ -10,37 +10,23 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class WhatsAppGeneral {
+public class WhatsAppGeneralSend {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-		Map<String,String> parameters = new HashMap<>();
-		parameters.put("client", "AQUI_SU_CLIENT");
-		parameters.put("key", "AQUI_SU_KEY");
-		parameters.put("template", "AQUI_EL_NOMBRE_DE_LA_PLANTILLA");
-		parameters.put("content", "AQUI_EL_JSON_CON_LOS_VALORES_PARA_LA_PLANTILLA");
+		
+		String clientId = "AQUI_SU_CLIENT";
+		String key = "AQUI_SU_KEY";
+		String template = "AQUI_EL_NOMBRE_DE_LA_PLANTILLA";
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
-				.POST(ofFormData(parameters))
-				.uri(URI.create("https://www.onurix.com/api/v1/whatsapp/send"))
-				.header("Content-Type", "application/x-www-form-urlencoded")
+				.POST(HttpRequest.BodyPublishers.ofString("AQUI_EL_JSON_CON_LOS_VALORES_PARA_LA_PLANTILLA"))
+				.uri(URI.create("https://www.onurix.com/api/v1/whatsapp/send?client=" + clientId + "&key=" + key + "&template=" + template))
+				.header("Content-Type", "application/json")
 				.build();
 		
 		var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-		//System.out.println(response.body());
+		System.out.println(response.body());
 	}
-
-    public static HttpRequest.BodyPublisher ofFormData(Map<String, String> parameters) {
-        var builder = new StringBuilder();
-        for (Entry<String, String> entry : parameters.entrySet()) {
-            if (builder.length() > 0) {
-                builder.append("&");
-            }
-            builder.append(URLEncoder.encode(entry.getKey().toString(), StandardCharsets.UTF_8));
-            builder.append("=");
-            builder.append(URLEncoder.encode(entry.getValue().toString(), StandardCharsets.UTF_8));
-        }
-        return HttpRequest.BodyPublishers.ofString(builder.toString());
-    }
 }
