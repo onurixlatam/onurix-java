@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class SendCALL2FA {
+public class SendCall2FA {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
@@ -19,15 +19,14 @@ public class SendCALL2FA {
 		parameters.put("key", "AQUI_SU_KEY");
 		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");
 		parameters.put("app-name", "AQUI_NOMBRE_APP");
-		parameters.put("voice", "AQUI_TIPO_DE_VOZ");
 		parameters.put("retries", "AQUI_NUMERO_DE_INTENTOS");
-		parameters.put("country-code", "CO");
 
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
 				.POST(ofFormData(parameters))
-				.uri(URI.create("https://www.onurix.com/api/v1/call/2fa/send-call"))
+				.uri(URI.create("https://www.onurix.com/api/v1/call/2fa/send"))
 				.header("Content-Type", "application/x-www-form-urlencoded")
 				.build();
 		

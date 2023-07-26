@@ -17,15 +17,16 @@ public class SendSMS {
 		Map<String,String> parameters = new HashMap<>();
 		parameters.put("client", "AQUI_SU_CLIENT");
 		parameters.put("key", "AQUI_SU_KEY");
-		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");
+		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");//PARA ENVIAR MULTIPLES TELEFONOS TENDRAN QUE SER SEPARADOS POR COMAS ","
 		parameters.put("sms", "AQUI_EL_SMS_A_ENVIAR");
-		parameters.put("country-code", "CO");
+		parameters.put("groups","AQUI_ID_DE_GRUPOS");//PARA ENVIAR MULTIPLES TELEFONOS TENDRAN QUE SER SEPARADOS POR COMAS ","
 
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
 				.POST(ofFormData(parameters))
-				.uri(URI.create("https://www.onurix.com/api/v1/send-sms"))
+				.uri(URI.create("https://www.onurix.com/api/v1/sms/send"))
 				.header("Content-Type", "application/x-www-form-urlencoded")
 				.build();
 		

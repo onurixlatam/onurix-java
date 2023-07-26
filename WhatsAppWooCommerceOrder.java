@@ -21,6 +21,7 @@ public class WhatsAppWooCommerceOrder {
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
 				.POST(HttpRequest.BodyPublishers.ofString("AQUI_EL_JSON_CON_LOS_VALORES_PARA_LA_PLANTILLA"))
 				.uri(URI.create("https://www.onurix.com/api/v1/whatsapp/woocommerce/order?client=" + clientId + "&key=" + key + "&template=" + template))
 				.header("Content-Type", "application/json")

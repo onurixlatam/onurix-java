@@ -19,10 +19,17 @@ public class URLShortener {
 		parameters.put("key", "AQUI_SU_KEY");
 		parameters.put("name", "AQUI_NOMBE_DE_URL");
 		parameters.put("url-long", "AQUI_URL_LARGA");
+		parameters.put("alias", "OPCIONAL_AQUI_ALIAS");
+		parameters.put("is-premium", "OPCIONAL_AQUI_TRUE_OR_FALSE_DEFAULT_FALSE");
+		parameters.put("group-name", "OPCIONAL_AQUI_NOMBRE_DE_GRUPO");
+		parameters.put("expiration-time-statistics", "OPCIONAL_AQUI_TIEMPO_ALMACENAMIENTO-ESTADITICAS");		
+
+
 
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
 				.POST(ofFormData(parameters))
 				.uri(URI.create("https://www.onurix.com/api/v1/url/short"))
 				.header("Content-Type", "application/x-www-form-urlencoded")

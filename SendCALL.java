@@ -10,24 +10,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class SendCALL {
+public class SendCall {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		Map<String,String> parameters = new HashMap<>();
 		parameters.put("client", "AQUI_SU_CLIENT");
 		parameters.put("key", "AQUI_SU_KEY");
-		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");
-		parameters.put("message", "AQUI_EL_MENSAJE_A_ENVIAR");
+		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");//PARA ENVIAR MULTIPLES TELEFONOS TENDRAN QUE SER SEPARADOS POR COMAS ","
+		parameters.put("message", "AQUI_EL_MENSAJE_A_ENVIAR");//EN CASO DE ENVIAR PARAMETRO AUDIO-CODE NO PASAR PARAMETROS MESSAGE Y VOICE
 		parameters.put("voice", "AQUI_TIPO_DE_VOZ");
 		parameters.put("retries", "AQUI_NUMERO_DE_INTENTOS");
 		parameters.put("leave-voicemail", "false");
 		//parameters.put("audio-code", "AQUI_ID_AUDIO");
-		parameters.put("country-code", "CO");
+		parameters.put("groups","AQUI_ID_GRUPOS");
+	
 
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
 				.POST(ofFormData(parameters))
 				.uri(URI.create("https://www.onurix.com/api/v1/call/send"))
 				.header("Content-Type", "application/x-www-form-urlencoded")
