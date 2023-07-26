@@ -23,6 +23,7 @@ public class Statistics {
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
 				.POST(ofFormData(parameters))
 				.uri(URI.create("https://www.onurix.com/api/v1/url/short-statistic"))
 				.header("Content-Type", "application/x-www-form-urlencoded")

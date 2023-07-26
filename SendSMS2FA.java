@@ -19,13 +19,13 @@ public class SendSMS2FA {
 		parameters.put("key", "AQUI_SU_KEY");
 		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");
 		parameters.put("app-name", "AQUI_NOMBRE_APP");
-		parameters.put("country-code", "CO");
 
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
 				.POST(ofFormData(parameters))
-				.uri(URI.create("https://www.onurix.com/api/v1/2fa/send-sms"))
+				.uri(URI.create("https://www.onurix.com/api/v1/sms/2fa/send"))
 				.header("Content-Type", "application/x-www-form-urlencoded")
 				.build();
 		

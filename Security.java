@@ -15,20 +15,22 @@ public class Security {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		Map<String,String> parameters = new HashMap<>();
-		parameters.put("client", "AQUI_SU_CLIENT");
+		parameters.put("client", "AQUI_SU_ID");
 		parameters.put("key", "AQUI_SU_KEY");
-		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");
-		parameters.put("name", "AQUI_NOMBRE_CONTACTO");
+		parameters.put("phone", "AQUI_TELEFONO_A_BLOQUEAR");
+		parameters.put("name", "AQUI_NOMBRE_DEL_CONTACTO");
+		parameters.put("channel","AQUI_CANAL_A_BLOQUEAR");//CANALES DISPONIBLES A BLOQUEAR "SMS","CALL","WA","ALL"
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
 				.POST(ofFormData(parameters))
 				.uri(URI.create("https://www.onurix.com/api/v1/block-phone"))
 				.header("Content-Type", "application/x-www-form-urlencoded")
 				.build();
 		
 		var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-		//System.out.println(response.body());
+		System.out.println(response.body());
 	}
 
     public static HttpRequest.BodyPublisher ofFormData(Map<String, String> parameters) {

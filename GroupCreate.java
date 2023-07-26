@@ -1,4 +1,3 @@
-//Para este codigo se uso jdk 11
 import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -10,31 +9,23 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class SendWhatsApp2FA {
-
-	public static void main(String[] args) throws IOException, InterruptedException {
-		// TODO Auto-generated method stub
-		Map<String,String> parameters = new HashMap<>();
-		parameters.put("client", "AQUI_SU_CLIENT");
+public class GroupCreate {
+    public static void main(String[] args) throws IOException, InterruptedException{
+        Map<String,String> parameters = new HashMap<>();
+        parameters.put("client", "AQUI_SU_CLIENT");
 		parameters.put("key", "AQUI_SU_KEY");
-		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");
-		parameters.put("app-name", "AQUI_NOMBRE_APP");
+        parameters.put("name","AQUI_EL_NOMBRE_DE_GRUPO");
 
-
-		var httpClient = HttpClient.newHttpClient();
-		var request = HttpRequest.newBuilder()
-				.version(HttpClient.Version.HTTP_2)
-				.POST(ofFormData(parameters))
-				.uri(URI.create("https://www.onurix.com/api/v1/whatsapp/2fa/send"))
-				.header("Content-Type", "application/x-www-form-urlencoded")
-				.build();
-		
-		var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpClient httpClient = HttpClient.newHttpClient();
+        var request = HttpRequest.newBuilder()
+                                .uri(URI.create("https://www.onurix.com/api/v1/group/create"))
+                                .POST(ofFormData(parameters))
+                                .header("Content-type","application/x-www-form-urlencoded")
+                                .build();
+        HttpResponse response =httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //System.out.println(response.body());
-
-	}
-
-    public static HttpRequest.BodyPublisher ofFormData(Map<String, String> parameters) {
+    }
+      public static HttpRequest.BodyPublisher ofFormData(Map<String, String> parameters) {
         var builder = new StringBuilder();
         for (Entry<String, String> entry : parameters.entrySet()) {
             if (builder.length() > 0) {

@@ -26,6 +26,7 @@ public class VerificationCode2FA {
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
 				.POST(ofFormData(parameters))
 				.uri(URI.create("https://www.onurix.com/api/v1/2fa/verification-code"))
 				.header("Content-Type", "application/x-www-form-urlencoded")
