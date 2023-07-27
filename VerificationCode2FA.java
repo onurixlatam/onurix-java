@@ -20,7 +20,6 @@ public class VerificationCode2FA {
 		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");
 		parameters.put("app-name", "AQUI_NOMBRE_APP");
 		parameters.put("code", "AQUI_CODIGO");
-		parameters.put("country-code", "CO");
 
 
 
