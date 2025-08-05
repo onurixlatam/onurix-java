@@ -17,13 +17,13 @@ public class WhatsAppGeneralSend {
 		
 		String clientId = "AQUI_SU_CLIENT";
 		String key = "AQUI_SU_KEY";
-		String template = "AQUI_EL_NOMBRE_DE_LA_PLANTILLA";
+		String templateId = "AQUI_EL_ID_DE_LA_PLANTILLA";
 
 		var httpClient = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder()
 				.version(HttpClient.Version.HTTP_2)
 				.POST(HttpRequest.BodyPublishers.ofString("AQUI_EL_JSON_CON_LOS_VALORES_PARA_LA_PLANTILLA"))
-				.uri(URI.create("https://www.onurix.com/api/v1/whatsapp/send?client=" + clientId + "&key=" + key + "&template=" + template))
+				.uri(URI.create("https://www.onurix.com/api/v1/whatsapp/send?client=" + clientId + "&key=" + key + "&templateId=" + templateId))
 				.header("Content-Type", "application/json")
 				.build();
 		
