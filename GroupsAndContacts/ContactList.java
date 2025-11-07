@@ -10,7 +10,7 @@ public class GroupList {
 		// TODO Auto-generated method stub
 		var httpClient = HttpClient.newHttpClient();
 
-		var request = HttpRequest.newBuilder(URI.create("https://www.onurix.com/api/v1/group/list?key=AQUI_SU_KEY&client=AQUI_SU_ID&page=AQUI_NUMERO_DE_PAGINA"))
+		var request = HttpRequest.newBuilder(URI.create("https://www.onurix.com/api/v1/contacts/list?key=AQUI_SU_KEY&client=AQUI_SU_ID&page=AQUI_NUMERO_DE_PAGINA"))
 											.GET()
 											.version(HttpClient.Version.HTTP_2)
 											.build();
