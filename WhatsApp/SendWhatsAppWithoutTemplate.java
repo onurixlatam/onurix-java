@@ -17,7 +17,7 @@ public class SendWhatsAppWithoutTemplate {
 
         try {
             // Construct the URL with query parameters
-            String fullUrl = apiUrl + "?key=" + apiKey + "&client=" + client + "&phone_sender_id=" + phoneSenderId;
+            String fullUrl = apiUrl + "?key=" + apiKey + "&client=" + client + "&phone-sender-id=" + phoneSenderId;
             URL url = new URL(fullUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
