@@ -13,10 +13,11 @@ public class SendWhatsAppWithoutTemplate {
         String apiUrl = "https://www.onurix.com/api/v1/whatsapp/send/no-template";
         String apiKey = "AQUI_SU_SECRET_KEY"; // Replace with your actual API key
         String client = "AQUI_SU_CLIENT_ID"; // Replace with your actual client ID
+        String phoneSenderId = "AQUI_EL_ID_DEL_NUMERO_DE_TELEFONO_REMITENTE"; // Replace with your phone sender meta ID
 
         try {
             // Construct the URL with query parameters
-            String fullUrl = apiUrl + "?key=" + apiKey + "&client=" + client;
+            String fullUrl = apiUrl + "?key=" + apiKey + "&client=" + client + "&phone_sender_id=" + phoneSenderId;
             URL url = new URL(fullUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
