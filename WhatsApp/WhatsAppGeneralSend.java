@@ -24,7 +24,7 @@ public class WhatsAppGeneralSend {
 		var request = HttpRequest.newBuilder()
 				.version(HttpClient.Version.HTTP_2)
 				.POST(HttpRequest.BodyPublishers.ofString("AQUI_EL_JSON_CON_LOS_VALORES_PARA_LA_PLANTILLA"))
-				.uri(URI.create("https://www.onurix.com/api/v1/whatsapp/send?client=" + clientId + "&key=" + key + "&template_id=" + templateId + "&phone_sender_id=" + phoneSenderId))
+				.uri(URI.create("https://www.onurix.com/api/v1/whatsapp/send?client=" + clientId + "&key=" + key + "&template-id=" + templateId + "&phone-sender-id=" + phoneSenderId))
 				.header("Content-Type", "application/json")
 				.build();
 		
