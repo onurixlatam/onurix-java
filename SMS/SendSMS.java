@@ -20,6 +20,9 @@ public class SendSMS {
 		parameters.put("phone", "AQUI_EL_NUMERO_DE_CELULAR");//PARA ENVIAR MULTIPLES TELEFONOS TENDRAN QUE SER SEPARADOS POR COMAS ","
 		parameters.put("sms", "AQUI_EL_SMS_A_ENVIAR");
 		parameters.put("groups","AQUI_ID_DE_GRUPOS");//PARA ENVIAR MULTIPLES TELEFONOS TENDRAN QUE SER SEPARADOS POR COMAS ","
+		// Opcional. 1 (por defecto): mensaje transaccional. 0: mensaje comercial (publicidad, promociones);
+		// los numeros inscritos en el Registro de Numeros Excluidos (RNE) que no aceptan SMS se rechazan con el error 1010.
+		parameters.put("is-transactional", "1");
 
 
 		var httpClient = HttpClient.newHttpClient();
